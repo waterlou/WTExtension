@@ -30,15 +30,31 @@ typedef NS_ENUM(NSInteger, UIImageResizeFillType) {
 // resize and keep the aspect ratio using fill in
 - (UIImage*) resizeFillIn : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality;
 // resize and keep the aspect ratio using fit in, not draw area will be in transparent color
-- (UIImage*) resizeFitIn : (CGSize)newSize roundCorner:(CGFloat)corner quality:(CGInterpolationQuality)quality;
+- (UIImage*) resizeFitIn : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality;
 
 // crop image, handled scale and orientation
 - (UIImage*) crop : (CGRect) cropRect;
 
+
+#pragma mark - above didn't add prefix for historic reason, functions below added prefix
+
 // return an image that orientation always UIImageOrientationUp
-- (UIImage*) normalizeOrientation;
+- (UIImage*) wt_normalizeOrientation;
+
+// normalize will convert image to jpeg and that load it back. It will normalize everything including colorspace and orientation
+- (UIImage*) wt_normalize;
 
 // generate plain image from color
-+ (UIImage*) imageWithUIColor : (UIColor*) color size : (CGSize) size;
++ (UIImage*) wt_imageWithUIColor : (UIColor*) color size : (CGSize) size;
+
+// apply gradient shading on top of the image, grayscale only
+- (UIImage*) wt_imageWithLinearGradient:(CGFloat)direction intensity:(CGFloat)intensity;
+// components is a CGFloat[4], [lum1, alpha1, lum2, alpha2]
+- (UIImage*) wt_imageWithLinearGradient:(CGFloat)direction components:(CGFloat*)components;
+
+// return image mask with another image, useful for e.g. tab icons
+- (UIImage*) wt_imageWithMask:(UIImage*)maskImage;
+// generic function to overlap two images
+- (UIImage*) wt_imageWithOverlay:(UIImage*)topImage blendMode:(CGBlendMode)blendMode alpha:(CGFloat)alpha scale:(BOOL)scale;
 
 @end

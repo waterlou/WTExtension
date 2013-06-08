@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class CALayer;
-
 @interface UIView (WTExtension)
 
+// extra geometry
 @property(nonatomic) CGPoint origin;
 @property(nonatomic) CGSize  size;
 @property(nonatomic) CGFloat width, height; // normal rect properties
@@ -19,14 +18,9 @@
 @property(nonatomic) CGFloat centerX, centerY;  // center x, y
 
 // will stretch bounds
-- (void) setLeftX:(CGFloat)left;
-- (void) setRightX:(CGFloat)right;
-- (void) setTopX:(CGFloat)top;
-- (void) setBottomX:(CGFloat)bottom;
-
-// take a snapshot of current view to image
-- (UIImage*) wt_snapshot;
-// create layer of the snapshot
-- (CALayer*) wt_layerFromSnapShot;
+- (void) setLeftStretched:(CGFloat)left;
+- (void) setRightStretched:(CGFloat)right;
+- (void) setTopStretched:(CGFloat)top;
+- (void) setBottomStretched:(CGFloat)bottom;
 
 @end

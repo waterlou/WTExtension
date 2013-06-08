@@ -61,7 +61,7 @@ static void CGContextMakeRoundCornerPath(CGContextRef c, CGRect rrect, float rad
      topRightCorner : (CGFloat)topRightCorner
   bottomRightCorner : (CGFloat)bottomRightCorner
    bottomLeftCorner : (CGFloat)bottomLeftCorner quality:(CGInterpolationQuality)quality {
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0);
 	CGRect imageRect = CGRectMake(0, 0, newSize.width, newSize.height);
 	if (topLeftCorner>0.0 || topRightCorner>0.0 || bottomLeftCorner>0.0 || bottomRightCorner>0.0) {
         CGContextRef c = UIGraphicsGetCurrentContext();
@@ -109,19 +109,6 @@ static void CGContextMakeRoundCornerPath(CGContextRef c, CGRect rrect, float rad
 	return ret;
 }
 
-- (UIImage*) normalizeOrientation
-{
-    if (self.imageOrientation==UIImageOrientationUp) return self;   // correct orientation
-    // redraw image in context to create a new image
-    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
-    UIGraphicsBeginImageContextWithOptions(rect.size, NO, [UIScreen mainScreen].scale);
-	[self drawInRect:rect];
-	UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	return ret;
-}
-
-
 - (UIImage*) crop : (CGRect) cropRect
 {
     // if orientation not standard, rotate the rect
@@ -152,11 +139,28 @@ static void CGContextMakeRoundCornerPath(CGContextRef c, CGRect rrect, float rad
     return ret;
 }
 
-+ (UIImage*) imageWithUIColor : (UIColor*) color size : (CGSize) size
+- (UIImage*) wt_normalizeOrientation
+{
+    if (self.imageOrientation==UIImageOrientationUp) return self;   // correct orientation
+    // redraw image in context to create a new image
+    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+	[self drawInRect:rect];
+	UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	return ret;
+}
+
+- (UIImage*) wt_normalize
+{
+    return [UIImage imageWithData:UIImageJPEGRepresentation(self, 1.0) scale:self.scale];
+}
+
++ (UIImage*) wt_imageWithUIColor : (UIColor*) color size : (CGSize) size
 {
     // redraw image in context to create a new image
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    UIGraphicsBeginImageContextWithOptions(rect.size, NO, [UIScreen mainScreen].scale);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
     [color setFill];
     CGContextFillRect(UIGraphicsGetCurrentContext(), rect);
 	UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
@@ -164,5 +168,73 @@ static void CGContextMakeRoundCornerPath(CGContextRef c, CGRect rrect, float rad
 	return ret;
     
 }
+
+// private function to draw gradient according the size of the image
+- (void) wt_applyLinearGradient:(CGFloat)direction components:(CGFloat*)components context:(CGContextRef)context
+{
+    CGSize size = self.size;
+    CGContextSetBlendMode(context, kCGBlendModeSourceAtop);
+    
+    CGColorSpaceRef myColorspace=CGColorSpaceCreateDeviceGray();
+    size_t num_locations = 2;
+    CGFloat locations[2] = { 0.0, 1.0 };
+    
+    CGGradientRef myGradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, num_locations);
+    
+    CGFloat angle = direction * M_PI / 180.0f;
+    CGFloat width = fminf(size.height, size.width) / 2.0f;
+    CGPoint myStartPoint, myEndPoint;
+    myStartPoint.x = cosf(angle) * width + size.width / 2.0f;
+    myStartPoint.y = -sinf(angle) * width + size.height / 2.0f;
+    myEndPoint.x = cosf(angle+M_PI) * width + size.width / 2.0f;
+    myEndPoint.y = -sinf(angle+M_PI) * width + size.height / 2.0f;
+    CGContextDrawLinearGradient (context, myGradient, myStartPoint, myEndPoint, 0);
+    CGGradientRelease(myGradient);
+    CGColorSpaceRelease(myColorspace);
+}
+
+- (UIImage*) wt_imageWithLinearGradient:(CGFloat)direction intensity:(CGFloat)intensity
+{
+    CGFloat components[] = {0.0, intensity, 1.0, intensity};
+    return [self wt_imageWithLinearGradient:direction components:components];
+}
+
+- (UIImage*) wt_imageWithLinearGradient:(CGFloat)direction components:(CGFloat*)components
+{
+    CGSize size = self.size;
+    CGRect rect = (CGRect){.origin = CGPointZero, .size = size};
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+	[self drawInRect:rect];
+
+    // apply gradient
+    [self wt_applyLinearGradient:direction components:components context:UIGraphicsGetCurrentContext()];
+    
+	UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	return ret;
+}
+
+- (UIImage*) wt_imageWithMask:(UIImage*)maskImage
+{
+    return [maskImage wt_imageWithOverlay:self blendMode:kCGBlendModeSourceIn alpha:1.0 scale:NO];
+}
+
+- (UIImage*) wt_imageWithOverlay:(UIImage*)topImage blendMode:(CGBlendMode)blendMode alpha:(CGFloat)alpha scale:(BOOL)scale
+{
+    CGSize size = self.size;
+    CGRect rect = (CGRect){.origin = CGPointZero, .size = size};
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+	[self drawInRect:rect];
+    
+    if (scale)
+        [topImage drawInRect:rect blendMode:blendMode alpha:alpha];
+    else
+        [topImage drawAtPoint:CGPointMake((size.width - topImage.size.width)/2.0f, (size.height - topImage.size.height)/2.0f) blendMode:blendMode alpha:alpha];
+    
+	UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	return ret;
+}
+
 
 @end
