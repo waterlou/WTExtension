@@ -139,7 +139,7 @@ static void CGContextMakeRoundCornerPath(CGContextRef c, CGRect rrect, float rad
     return ret;
 }
 
-- (UIImage*) wt_normalizeOrientation
+- (UIImage*) normalizeOrientation
 {
     if (self.imageOrientation==UIImageOrientationUp) return self;   // correct orientation
     // redraw image in context to create a new image
@@ -159,10 +159,47 @@ static void CGContextMakeRoundCornerPath(CGContextRef c, CGRect rrect, float rad
 + (UIImage*) wt_imageWithUIColor : (UIColor*) color size : (CGSize) size
 {
     // redraw image in context to create a new image
-    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    CGRect rect = (CGRect){.origin=CGPointZero, .size=size};
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
     [color setFill];
     CGContextFillRect(UIGraphicsGetCurrentContext(), rect);
+	UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	return ret;
+    
+}
+
++ (UIImage*) wt_spotMask:(CGSize)size center:(CGPoint)center startRadius:(CGFloat)startRadius endRadius:(CGFloat)endRadius inverted:(BOOL)inverted
+{
+
+    CGRect rect = (CGRect){.origin=CGPointZero, .size=size};
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+    if (inverted) {
+        static CGGradientRef gradient = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            CGColorSpaceRef myColorspace=CGColorSpaceCreateDeviceGray();
+            const CGFloat locations[5] = { 0.0, 0.35, 0.5, 0.65, 1.0 };
+            const CGFloat components[10] = { 1.0, 0.0, 1.0, 0.25, 1.0, 0.5, 1.0, 0.75, 1.0, 1.0};
+            size_t num_locations = sizeof(locations) / sizeof(locations[0]);
+            gradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, num_locations);
+            CGColorSpaceRelease(myColorspace);
+        });
+        CGContextDrawRadialGradient(UIGraphicsGetCurrentContext(), gradient, center, startRadius, center, endRadius, kCGGradientDrawsAfterEndLocation);
+    }
+    else {
+        static CGGradientRef gradient = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            CGColorSpaceRef myColorspace=CGColorSpaceCreateDeviceGray();
+            const CGFloat locations[5] = { 1.0, 0.65, 0.5, 0.35, 0.0 };
+            const CGFloat components[10] = { 1.0, 0.0, 1.0, 0.25, 1.0, 0.5, 1.0, 0.75, 1.0, 1.0};
+            size_t num_locations = sizeof(locations) / sizeof(locations[0]);
+            gradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, num_locations);
+            CGColorSpaceRelease(myColorspace);
+        });
+        CGContextDrawRadialGradient(UIGraphicsGetCurrentContext(), gradient, center, startRadius, center, endRadius, kCGGradientDrawsBeforeStartLocation);
+    }
 	UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	return ret;

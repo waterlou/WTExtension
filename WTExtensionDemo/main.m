@@ -3,7 +3,7 @@
 //  WTExtensionDemo
 //
 //  Created by Water Lou on 8/6/13.
-//  Copyright (c) 2013 Water Lou. All rights reserved.
+//  Copyright (c) 2013 Water Lou. All rightsse reserved.
 //
 
 #import <UIKit/UIKit.h>

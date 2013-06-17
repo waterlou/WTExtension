@@ -168,7 +168,7 @@
                  onSetupCell:(void(^)(UITableViewCell*))setupCellBlock
                     onSelect:(void(^)(UITableView*, NSIndexPath*))selectBlockOrNil
 {
-    NSLog(@"inserting at section %d", section);
+    //NSLog(@"inserting at section %d", section);
     WTStaticTableSection *sectionData = [self sectionData: section];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sectionData.rows.count inSection:section];
     [self setCellAtIndexPath:indexPath identifier:identifier onSetupCell:setupCellBlock onSelect:selectBlockOrNil];

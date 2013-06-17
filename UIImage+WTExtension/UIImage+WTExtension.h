@@ -35,17 +35,18 @@ typedef NS_ENUM(NSInteger, UIImageResizeFillType) {
 // crop image, handled scale and orientation
 - (UIImage*) crop : (CGRect) cropRect;
 
+// return an image that orientation always UIImageOrientationUp
+- (UIImage*) normalizeOrientation;
 
 #pragma mark - above didn't add prefix for historic reason, functions below added prefix
-
-// return an image that orientation always UIImageOrientationUp
-- (UIImage*) wt_normalizeOrientation;
 
 // normalize will convert image to jpeg and that load it back. It will normalize everything including colorspace and orientation
 - (UIImage*) wt_normalize;
 
 // generate plain image from color
 + (UIImage*) wt_imageWithUIColor : (UIColor*) color size : (CGSize) size;
+// create a radial graident mask
++ (UIImage*) wt_spotMask:(CGSize)size center:(CGPoint)center startRadius:(CGFloat)startRadius endRadius:(CGFloat)endRadius inverted:(BOOL)inverted;
 
 // apply gradient shading on top of the image, grayscale only
 - (UIImage*) wt_imageWithLinearGradient:(CGFloat)direction intensity:(CGFloat)intensity;
@@ -56,5 +57,6 @@ typedef NS_ENUM(NSInteger, UIImageResizeFillType) {
 - (UIImage*) wt_imageWithMask:(UIImage*)maskImage;
 // generic function to overlap two images
 - (UIImage*) wt_imageWithOverlay:(UIImage*)topImage blendMode:(CGBlendMode)blendMode alpha:(CGFloat)alpha scale:(BOOL)scale;
+
 
 @end
