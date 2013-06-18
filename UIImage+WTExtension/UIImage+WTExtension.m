@@ -40,22 +40,22 @@ static void CGContextMakeRoundCornerPath(CGContextRef c, CGRect rrect, float rad
 
 @implementation UIImage (WTExtension)
 
-- (UIImage*) resize : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality {
-	return [self resize:newSize fillType:UIImageResizeFillTypeIgnoreAspectRatio
+- (UIImage*) wt_resize : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality {
+	return [self wt_resize:newSize fillType:UIImageResizeFillTypeIgnoreAspectRatio
           topLeftCorner:roundCorner topRightCorner:roundCorner bottomRightCorner:roundCorner bottomLeftCorner:roundCorner quality:quality];
 }
 
-- (UIImage*) resizeFillIn : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality {
-	return [self resize:newSize fillType:UIImageResizeFillTypeFillIn
+- (UIImage*) wt_resizeFillIn : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality {
+	return [self wt_resize:newSize fillType:UIImageResizeFillTypeFillIn
           topLeftCorner:roundCorner topRightCorner:roundCorner bottomRightCorner:roundCorner bottomLeftCorner:roundCorner quality:quality];
 }
 
-- (UIImage*) resizeFitIn : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality {
-	return [self resize:newSize fillType:UIImageResizeFillTypeFitIn
+- (UIImage*) wt_resizeFitIn : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality {
+	return [self wt_resize:newSize fillType:UIImageResizeFillTypeFitIn
           topLeftCorner:roundCorner topRightCorner:roundCorner bottomRightCorner:roundCorner bottomLeftCorner:roundCorner quality:quality];
 }
 
-- (UIImage*) resize : (CGSize)newSize
+- (UIImage*) wt_resize : (CGSize)newSize
            fillType : (UIImageResizeFillType) fillType
       topLeftCorner : (CGFloat)topLeftCorner
      topRightCorner : (CGFloat)topRightCorner
@@ -109,7 +109,7 @@ static void CGContextMakeRoundCornerPath(CGContextRef c, CGRect rrect, float rad
 	return ret;
 }
 
-- (UIImage*) crop : (CGRect) cropRect
+- (UIImage*) wt_crop : (CGRect) cropRect
 {
     // if orientation not standard, rotate the rect
     CGFloat scale = self.scale;
@@ -139,7 +139,7 @@ static void CGContextMakeRoundCornerPath(CGContextRef c, CGRect rrect, float rad
     return ret;
 }
 
-- (UIImage*) normalizeOrientation
+- (UIImage*) wt_normalizeOrientation
 {
     if (self.imageOrientation==UIImageOrientationUp) return self;   // correct orientation
     // redraw image in context to create a new image

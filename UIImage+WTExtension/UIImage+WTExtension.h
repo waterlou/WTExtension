@@ -18,25 +18,25 @@ typedef NS_ENUM(NSInteger, UIImageResizeFillType) {
 /*
  * resize image with options to keep aspect ratio using different method. And optionally round the corners
  */
-- (UIImage*) resize : (CGSize)newSize
-           fillType : (UIImageResizeFillType) fillType
-      topLeftCorner : (CGFloat)topLeftCorner
-     topRightCorner : (CGFloat)topRightCorner
-  bottomRightCorner : (CGFloat)bottomRightCorner
-   bottomLeftCorner : (CGFloat)bottomLeftCorner quality:(CGInterpolationQuality)quality;
+- (UIImage*) wt_resize : (CGSize)newSize
+              fillType : (UIImageResizeFillType) fillType
+         topLeftCorner : (CGFloat)topLeftCorner
+        topRightCorner : (CGFloat)topRightCorner
+     bottomRightCorner : (CGFloat)bottomRightCorner
+      bottomLeftCorner : (CGFloat)bottomLeftCorner quality:(CGInterpolationQuality)quality;
 
 // resize and not keep the aspect ratio
-- (UIImage*) resize : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality;
+- (UIImage*) wt_resize : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality;
 // resize and keep the aspect ratio using fill in
-- (UIImage*) resizeFillIn : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality;
+- (UIImage*) wt_resizeFillIn : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality;
 // resize and keep the aspect ratio using fit in, not draw area will be in transparent color
-- (UIImage*) resizeFitIn : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality;
+- (UIImage*) wt_resizeFitIn : (CGSize)newSize roundCorner:(CGFloat)roundCorner quality:(CGInterpolationQuality)quality;
 
 // crop image, handled scale and orientation
-- (UIImage*) crop : (CGRect) cropRect;
+- (UIImage*) wt_crop : (CGRect) cropRect;
 
 // return an image that orientation always UIImageOrientationUp
-- (UIImage*) normalizeOrientation;
+- (UIImage*) wt_normalizeOrientation;
 
 #pragma mark - above didn't add prefix for historic reason, functions below added prefix
 

@@ -27,7 +27,7 @@
 - (UIImageView*) imageView
 {
     if (_imageView==nil) {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"screenshot"] resizeFillIn:CGSizeMake(128.0, 128.0) roundCorner:0 quality:kCGInterpolationDefault]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"screenshot"] wt_resizeFillIn:CGSizeMake(128.0, 128.0) roundCorner:0 quality:kCGInterpolationDefault]];
         _imageView = imageView;
         _imageView.center = CGPointMake(160.0, 160.0);
         [self.view addSubview: _imageView];

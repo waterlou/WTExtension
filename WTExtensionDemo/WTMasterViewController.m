@@ -34,7 +34,7 @@
 - (UIImage*) demoImage
 {
     UIImage *image = [UIImage imageNamed:@"screenshot"];
-    return [image resizeFillIn:CGSizeMake(128, 128) roundCorner:64.0f quality:kCGInterpolationDefault];
+    return [image wt_resizeFillIn:CGSizeMake(128, 128) roundCorner:64.0f quality:kCGInterpolationDefault];
 }
 
 - (void)viewDidLoad
@@ -52,7 +52,7 @@
     } onSelect:^(UITableView *tableView, NSIndexPath *indexPath) {
         WTTestImageViewController *vc = [[WTTestImageViewController alloc] initWithNibName:nil bundle:nil];
         UIImage *image = [UIImage imageNamed:@"screenshot"];
-        UIImage *resultImage = [image resizeFillIn:CGSizeMake(128, 128) roundCorner:8.0f quality:kCGInterpolationDefault];
+        UIImage *resultImage = [image wt_resizeFillIn:CGSizeMake(128, 128) roundCorner:8.0f quality:kCGInterpolationDefault];
         [vc setImage:resultImage];
         [self.navigationController pushViewController:vc animated:YES];
     }];
