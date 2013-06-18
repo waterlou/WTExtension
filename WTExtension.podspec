@@ -32,11 +32,6 @@ Pod::Spec.new do |s|
   end
 
   # Filters
-  s.subspec 'UIImage+WTFilter' do |l|
-  	l.source_files  = 'UIImage+WTFilter/UIImage+WTFilter.h'
-  	l.dependency = 'WTExtension/UIImage+WTFilterFastBlur'
-  	l.dependency = 'WTExtension/UIImage+WTFilterBlur'
-  end
   s.subspec 'UIImage+WTFilterFastBlur' do |l|
   	l.source_files  = 'UIImage+WTFilter/UIImage+WTFilterFastBlur.{h,m}'
   	l.frameworks    = 'UIKit', 'Accelerate'
@@ -44,6 +39,12 @@ Pod::Spec.new do |s|
   s.subspec 'UIImage+WTFilterBlur' do |l|
   	l.source_files  = 'UIImage+WTFilter/UIImage+WTFilterBlur.{h,m}'
   	l.frameworks    = 'UIKit', 'CoreImage'
+  end
+  # All Filters
+  s.subspec 'UIImage+WTFilter' do |l|
+  	l.source_files  = 'UIImage+WTFilter/UIImage+WTFilter.h'
+  	l.dependency 'WTExtension/UIImage+WTFilterFastBlur'
+  	l.dependency 'WTExtension/UIImage+WTFilterBlur'
   end
 
 end
