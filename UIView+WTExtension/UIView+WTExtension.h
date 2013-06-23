@@ -23,4 +23,7 @@
 - (void) setTopStretched:(CGFloat)top;
 - (void) setBottomStretched:(CGFloat)bottom;
 
+// set the size of the view with the center unchanged
+- (void) setSizeCentered:(CGSize)size;
+
 @end

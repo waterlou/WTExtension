@@ -10,6 +10,10 @@
 
 @interface UIDevice (WTExtension)
 
+// major version number, i.e. iOS 7.1 will return 7
 +(NSUInteger) wt_deviceSystemMajorVersion;
+
+// check if the device is an iPad
++ (BOOL) wt_isPad;
 
 @end

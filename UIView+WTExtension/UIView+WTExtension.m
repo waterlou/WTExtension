@@ -45,4 +45,9 @@
 - (CGFloat)centerY {return self.center.y;}
 - (void)setCenterY:(CGFloat)centerY {self.center = CGPointMake(self.center.x, centerY);}
 
+- (void) setSizeCentered:(CGSize)size
+{
+    self.frame = (CGRect){.origin.x = self.center.x - size.width / 2.0, .origin.y = self.center.y - size.height / 2.0, .size = size};
+}
+
 @end

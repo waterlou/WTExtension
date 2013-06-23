@@ -20,4 +20,8 @@
     return _deviceSystemMajorVersion;
 }
 
++ (BOOL) wt_isPad {
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+}
+
 @end
