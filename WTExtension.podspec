@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
 
   s.name          = 'WTExtension'
-  s.version       = '1.2.0'
+  s.version       = '1.2.1'
   s.summary       = 'Some useful categories used in other public libraries.'
   s.homepage      = 'https://github.com/waterlou/WTExtension'
   s.license       = { :type => 'MIT', :file => 'LICENSE.md' }
   s.author        = { 'waterlou' => 'https://github.com/waterlou' }
-  s.source        = { :git => 'https://github.com/waterlou/WTExtension.git', :tag => '1.2.0' }
+  s.source        = { :git => 'https://github.com/waterlou/WTExtension.git', :tag => '1.2.1' }
 
   s.platform      = :ios
   s.requires_arc  = true
