@@ -31,6 +31,11 @@ Pod::Spec.new do |s|
   	l.frameworks    = 'UIKit'
   end
 
+  s.subspec 'UIWebView+WTExtension' do |l|
+  	l.source_files  = 'UIWebView+WTExtension/*.{h,m}'
+  	l.frameworks    = 'UIKit'
+  end
+
   # Filters
   s.subspec 'UIImage+WTFilterFastBlur' do |l|
   	l.source_files  = 'UIImage+WTFilter/UIImage+WTFilterFastBlur.{h,m}'

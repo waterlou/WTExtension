@@ -194,6 +194,35 @@
         [vc setImage: image];
         [self.navigationController pushViewController:vc animated:YES];
     }];
+    [_dataSource appendCellAtSection:section identifier:nil onSetupCell:^(UITableViewCell*cell) {
+        cell.textLabel.text = @"Emboss";
+    } onSelect:^(UITableView *tableView, NSIndexPath *indexPath) {
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(300, 300), NO, 0);
+        UIBezierPath *path;
+        path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(10, 10, 80, 80) cornerRadius:10];
+        [path stroke];
+        [path wt_drawInnerShadow:CGSizeMake(-2, -2) width:4 color:[UIColor colorWithWhite:0.0 alpha:0.3]];
+        [path wt_drawInnerShadow:CGSizeMake(2, 2) width:4 color:[UIColor colorWithWhite:1.0 alpha:0.3]];
+        
+        path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(10, 100, 80, 80)];
+        [path stroke];
+        [path wt_drawInnerShadow:CGSizeMake(2, 2) width:4 color:[UIColor colorWithWhite:0.0 alpha:0.3]];
+        [path wt_drawInnerShadow:CGSizeMake(-2, -2) width:4 color:[UIColor colorWithWhite:1.0 alpha:0.3]];
+        
+        path = [UIBezierPath bezierPathWithRect:CGRectMake(100, 10, 80, 80)];
+        [path wt_drawInnerShadow:CGSizeMake(-2, -2) width:10 color:[UIColor colorWithWhite:0.0 alpha:0.3]];
+        [path wt_drawInnerShadow:CGSizeMake(2, 2) width:10 color:[UIColor colorWithWhite:1.0 alpha:0.3]];
+        
+        path = [UIBezierPath bezierPathWithRect:CGRectMake(100, 100, 80, 80)];
+        [path wt_drawInnerShadow:CGSizeMake(-2, -2) width:4 color:[UIColor colorWithWhite:0.0 alpha:0.3]];
+        [path wt_drawInnerShadow:CGSizeMake(2, 2) width:4 color:[UIColor colorWithWhite:1.0 alpha:0.3]];
+        
+        UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        WTTestImageViewController *vc = [[WTTestImageViewController alloc] initWithNibName:nil bundle:nil];
+        [vc setImage: image];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
     
 
 }

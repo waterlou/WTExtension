@@ -31,6 +31,7 @@
 		49B345EC1762D4650072708E /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 49B345EB1762D4650072708E /* screenshot.png */; };
 		49B345EE1762D6820072708E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B345ED1762D6820072708E /* Accelerate.framework */; };
 		49F8AD981762E0C1009D6EFC /* UIView+WTLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AD971762E0C1009D6EFC /* UIView+WTLayer.m */; };
+		49FBFCE3177DD5280078FBED /* UIWebView+WTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FBFCE2177DD5280078FBED /* UIWebView+WTExtension.m */; };
 		7524FC43AE694E6CAABDD4CC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C42945EC77F7454DBA9664AC /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,8 @@
 		49B345ED1762D6820072708E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		49F8AD961762E0C1009D6EFC /* UIView+WTLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+WTLayer.h"; path = "UIView+WTLayer/UIView+WTLayer.h"; sourceTree = "<group>"; };
 		49F8AD971762E0C1009D6EFC /* UIView+WTLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WTLayer.m"; path = "UIView+WTLayer/UIView+WTLayer.m"; sourceTree = "<group>"; };
+		49FBFCE1177DD5280078FBED /* UIWebView+WTExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWebView+WTExtension.h"; path = "UIWebView+WTExtension/UIWebView+WTExtension.h"; sourceTree = "<group>"; };
+		49FBFCE2177DD5280078FBED /* UIWebView+WTExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+WTExtension.m"; path = "UIWebView+WTExtension/UIWebView+WTExtension.m"; sourceTree = "<group>"; };
 		C42945EC77F7454DBA9664AC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,6 +121,7 @@
 		49B3459F1762CE260072708E = {
 			isa = PBXGroup;
 			children = (
+				49FBFCE4177DD52E0078FBED /* UIWebView+WTExtension */,
 				492EAA1217748969001CF0BA /* UIBeizerPath+WTExtension */,
 				49009933176737A90072AF3C /* UIDevice+WTExtension */,
 				49F8AD951762E05F009D6EFC /* UIView+WTLayer */,
@@ -234,6 +238,15 @@
 			name = "UIView+WTLayer";
 			sourceTree = "<group>";
 		};
+		49FBFCE4177DD52E0078FBED /* UIWebView+WTExtension */ = {
+			isa = PBXGroup;
+			children = (
+				49FBFCE1177DD5280078FBED /* UIWebView+WTExtension.h */,
+				49FBFCE2177DD5280078FBED /* UIWebView+WTExtension.m */,
+			);
+			name = "UIWebView+WTExtension";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -347,6 +360,7 @@
 				4968D22C1764869A008D4AC0 /* UIImage+WTFilterFastBlur.m in Sources */,
 				49009936176737D40072AF3C /* UIDevice+WTExtension.m in Sources */,
 				492EAA1517748997001CF0BA /* UIBezierPath+WTExtension.m in Sources */,
+				49FBFCE3177DD5280078FBED /* UIWebView+WTExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
