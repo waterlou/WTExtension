@@ -31,11 +31,11 @@
 - (void)setTopStretched:(CGFloat)top { self.frame = (CGRect){ .origin.x=self.frame.origin.x, .origin.y=top, .size.width=self.frame.size.width, .size.height=fmaxf(self.frame.origin.y+self.frame.size.height-top,0) }; }
 
 - (CGFloat)right { return self.frame.origin.x + self.frame.size.width; }
-- (void)setRight:(CGFloat)right { self.frame = (CGRect){ .origin.x=self.frame.origin.x, .origin.y=self.frame.origin.y, .size=self.frame.size }; }
+- (void)setRight:(CGFloat)right { self.frame = (CGRect){ .origin.x=right-self.frame.size.width, .origin.y=self.frame.origin.y, .size=self.frame.size }; }
 - (void)setRightStretched:(CGFloat)right { self.frame = (CGRect){ .origin=self.frame.origin, .size.width=fmaxf(right-self.frame.origin.x,0), .size.height=self.frame.size.height }; }
 
 - (CGFloat)bottom { return self.frame.origin.y + self.frame.size.height; }
-- (void)setBottom:(CGFloat)bottom { self.frame = (CGRect){ .origin=self.frame.origin, .size.width=self.frame.size.width, .size.height=fmaxf(bottom-self.frame.origin.y,0) }; }
+- (void)setBottom:(CGFloat)bottom { self.frame = (CGRect){ .origin.x=self.frame.origin.x, .origin.y=bottom-self.frame.size.height, .size=self.frame.size }; }
 - (void)setBottomStretched:(CGFloat)bottom { self.frame = (CGRect){ .origin=self.frame.origin, .size.width=self.frame.size.width, .size.height=fmaxf(bottom-self.frame.origin.y,0) }; }
 
 #pragma mark center
