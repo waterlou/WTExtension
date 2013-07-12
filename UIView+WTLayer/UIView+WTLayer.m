@@ -8,7 +8,7 @@
 
 #import "UIView+WTLayer.h"
 
-CGGradientRef dropShadowGradient()
+static CGGradientRef dropShadowGradient()
 {
     static CGGradientRef shadowGradient = nil;
     static dispatch_once_t onceToken;
