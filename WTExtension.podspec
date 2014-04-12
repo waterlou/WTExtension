@@ -6,10 +6,10 @@ Pod::Spec.new do |s|
   s.homepage      = 'https://github.com/waterlou/WTExtension'
   s.license       = { :type => 'MIT', :file => 'LICENSE.md' }
   s.author        = { 'waterlou' => 'https://github.com/waterlou' }
-  s.source        = { :git => 'https://github.com/waterlou/WTExtension.git', :tag => '1.2.1' }
 
-  s.platform      = :ios
+  s.platform      = :ios, '5.0'
   s.requires_arc  = true
+  s.source        = { :git => 'https://github.com/waterlou/WTExtension.git', :tag => "#{s.version}" }
 
   s.subspec 'UIImage+WTExtension' do |l|
   	l.source_files  = 'UIImage+WTExtension/*.{h,m}'
@@ -34,6 +34,11 @@ Pod::Spec.new do |s|
   s.subspec 'UIWebView+WTExtension' do |l|
   	l.source_files  = 'UIWebView+WTExtension/*.{h,m}'
   	l.frameworks    = 'UIKit'
+  end
+
+  s.subspec 'UIImage+WTFaceDetection' do |l|
+  	l.source_files  = 'UIImage+WTFaceDetection/*.{h,m}'
+  	l.frameworks    = 'UIKit', 'CoreImage'
   end
 
   # Filters

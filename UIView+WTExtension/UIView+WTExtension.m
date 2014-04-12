@@ -50,4 +50,45 @@
     self.frame = (CGRect){.origin.x = self.center.x - size.width / 2.0, .origin.y = self.center.y - size.height / 2.0, .size = size};
 }
 
+#pragma mark -
+- (UIViewController*)wt_viewController
+{
+    UIResponder *responder = [self nextResponder];
+    while (responder!=nil) {
+        if ([responder isKindOfClass:[UIViewController class]])
+            return (UIViewController*)responder;
+        responder = [responder nextResponder];
+    }
+    return nil;
+}
+
+#pragma mark responder helpers
+
+-(void) wt_resignAllFirstResponder
+{
+    if ([self isFirstResponder])
+    {
+        [self resignFirstResponder];
+        return;
+    }
+    for (UIView *v in self.subviews)
+    {
+        [v wt_resignAllFirstResponder];
+    }
+}
+
+-(UIView *) wt_childFirstResponder
+{
+    if ([self isFirstResponder])
+    {
+        return self;
+    }
+    for (UIView *v in self.subviews)
+    {
+        UIView *ret = [v wt_childFirstResponder];
+        if (ret) return ret;
+    }
+    return nil;
+}
+
 @end

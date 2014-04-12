@@ -30,6 +30,7 @@
 		49B345EA1762D2AC0072708E /* WTTestImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B345E91762D2AC0072708E /* WTTestImageViewController.m */; };
 		49B345EC1762D4650072708E /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 49B345EB1762D4650072708E /* screenshot.png */; };
 		49B345EE1762D6820072708E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B345ED1762D6820072708E /* Accelerate.framework */; };
+		49E738431886779F008B5847 /* UIImage+WTFaceDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E738421886779F008B5847 /* UIImage+WTFaceDetection.m */; };
 		49F8AD981762E0C1009D6EFC /* UIView+WTLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F8AD971762E0C1009D6EFC /* UIView+WTLayer.m */; };
 		49FBFCE3177DD5280078FBED /* UIWebView+WTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FBFCE2177DD5280078FBED /* UIWebView+WTExtension.m */; };
 		7524FC43AE694E6CAABDD4CC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C42945EC77F7454DBA9664AC /* libPods.a */; };
@@ -75,6 +76,8 @@
 		49B345E91762D2AC0072708E /* WTTestImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTestImageViewController.m; sourceTree = "<group>"; };
 		49B345EB1762D4650072708E /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		49B345ED1762D6820072708E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		49E738411886779F008B5847 /* UIImage+WTFaceDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+WTFaceDetection.h"; path = "UIImage+WTFaceDetection/UIImage+WTFaceDetection.h"; sourceTree = "<group>"; };
+		49E738421886779F008B5847 /* UIImage+WTFaceDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+WTFaceDetection.m"; path = "UIImage+WTFaceDetection/UIImage+WTFaceDetection.m"; sourceTree = "<group>"; };
 		49F8AD961762E0C1009D6EFC /* UIView+WTLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+WTLayer.h"; path = "UIView+WTLayer/UIView+WTLayer.h"; sourceTree = "<group>"; };
 		49F8AD971762E0C1009D6EFC /* UIView+WTLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WTLayer.m"; path = "UIView+WTLayer/UIView+WTLayer.m"; sourceTree = "<group>"; };
 		49FBFCE1177DD5280078FBED /* UIWebView+WTExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWebView+WTExtension.h"; path = "UIWebView+WTExtension/UIWebView+WTExtension.h"; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 		49B3459F1762CE260072708E = {
 			isa = PBXGroup;
 			children = (
+				49E7384018867755008B5847 /* UIImage+WTFaceDetection */,
 				49FBFCE4177DD52E0078FBED /* UIWebView+WTExtension */,
 				492EAA1217748969001CF0BA /* UIBeizerPath+WTExtension */,
 				49009933176737A90072AF3C /* UIDevice+WTExtension */,
@@ -227,6 +231,15 @@
 				49B345DF1762D0C80072708E /* UIImage+WTExtension.m */,
 			);
 			path = "UIImage+WTExtension";
+			sourceTree = "<group>";
+		};
+		49E7384018867755008B5847 /* UIImage+WTFaceDetection */ = {
+			isa = PBXGroup;
+			children = (
+				49E738411886779F008B5847 /* UIImage+WTFaceDetection.h */,
+				49E738421886779F008B5847 /* UIImage+WTFaceDetection.m */,
+			);
+			name = "UIImage+WTFaceDetection";
 			sourceTree = "<group>";
 		};
 		49F8AD951762E05F009D6EFC /* UIView+WTLayer */ = {
@@ -357,6 +370,7 @@
 				49F8AD981762E0C1009D6EFC /* UIView+WTLayer.m in Sources */,
 				4968D22017642A1A008D4AC0 /* WTTestAnimViewController.m in Sources */,
 				4968D2291764868B008D4AC0 /* UIImage+WTFilterBlur.m in Sources */,
+				49E738431886779F008B5847 /* UIImage+WTFaceDetection.m in Sources */,
 				4968D22C1764869A008D4AC0 /* UIImage+WTFilterFastBlur.m in Sources */,
 				49009936176737D40072AF3C /* UIDevice+WTExtension.m in Sources */,
 				492EAA1517748997001CF0BA /* UIBezierPath+WTExtension.m in Sources */,
@@ -441,7 +455,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WTExtensionDemo/WTExtensionDemo-Prefix.pch";
 				INFOPLIST_FILE = "WTExtensionDemo/WTExtensionDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -454,7 +468,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WTExtensionDemo/WTExtensionDemo-Prefix.pch";
 				INFOPLIST_FILE = "WTExtensionDemo/WTExtensionDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

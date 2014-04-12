@@ -26,4 +26,12 @@
 // set the size of the view with the center unchanged
 - (void) setSizeCentered:(CGSize)size;
 
+
+
+// try to get the viewController containing this view by using responder chain
+- (UIViewController*)wt_viewController;
+
+-(void) wt_resignAllFirstResponder; // resign all first responder for this view and it's children
+-(UIView *) wt_childFirstResponder; // for any child in the view that is a first responder
+
 @end
