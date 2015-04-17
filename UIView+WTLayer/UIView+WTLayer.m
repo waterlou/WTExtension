@@ -61,7 +61,12 @@ static CGGradientRef dropShadowGradient()
 {
     CGRect rect = self.bounds;
     UIGraphicsBeginImageContextWithOptions(rect.size, self.opaque, 0);
-    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    if ([self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+        [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:NO];
+    }
+    else {
+        [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    }
     UIImage* renderedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return renderedImage;
@@ -70,11 +75,19 @@ static CGGradientRef dropShadowGradient()
 - (UIImage*)wt_snapshotWithBounds:(CGRect)bounds
 {
 	UIGraphicsBeginImageContextWithOptions(bounds.size, self.opaque, 0);
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	// Translate it, to the desired position
-	CGContextTranslateCTM(context, -bounds.origin.x, -bounds.origin.y);
-    // Render the view as image
-    [self.layer renderInContext:context];
+    
+    if ([self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+        [self drawViewHierarchyInRect:bounds afterScreenUpdates:YES];
+    }
+    else {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        // Translate it, to the desired position
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, -bounds.origin.x, -bounds.origin.y);
+        // Render the view as image
+        [self.layer renderInContext:context];
+        CGContextRestoreGState(context);
+    }
     UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return renderedImage;

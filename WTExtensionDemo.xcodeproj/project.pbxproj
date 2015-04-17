@@ -12,6 +12,7 @@
 		4968D22017642A1A008D4AC0 /* WTTestAnimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4968D21F17642A1A008D4AC0 /* WTTestAnimViewController.m */; };
 		4968D2291764868B008D4AC0 /* UIImage+WTFilterBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 4968D2281764868B008D4AC0 /* UIImage+WTFilterBlur.m */; };
 		4968D22C1764869A008D4AC0 /* UIImage+WTFilterFastBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 4968D22B1764869A008D4AC0 /* UIImage+WTFilterFastBlur.m */; };
+		49AA25471AE133FE00945067 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AA25461AE133FE00945067 /* Main.storyboard */; };
 		49B345AC1762CE260072708E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B345AB1762CE260072708E /* UIKit.framework */; };
 		49B345AE1762CE260072708E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B345AD1762CE260072708E /* Foundation.framework */; };
 		49B345B01762CE260072708E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B345AF1762CE260072708E /* CoreGraphics.framework */; };
@@ -22,7 +23,6 @@
 		49B345C01762CE260072708E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49B345BF1762CE260072708E /* Default@2x.png */; };
 		49B345C21762CE260072708E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49B345C11762CE260072708E /* Default-568h@2x.png */; };
 		49B345C51762CE260072708E /* WTMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B345C41762CE260072708E /* WTMasterViewController.m */; };
-		49B345E01762D0C80072708E /* WTStaticTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B345D61762D0C80072708E /* WTStaticTableDataSource.m */; };
 		49B345E21762D0C80072708E /* UIView+WTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B345DC1762D0C80072708E /* UIView+WTExtension.m */; };
 		49B345E31762D0C80072708E /* UIImage+WTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B345DF1762D0C80072708E /* UIImage+WTExtension.m */; };
 		49B345E51762D1470072708E /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B345E41762D1470072708E /* CoreImage.framework */; };
@@ -48,6 +48,7 @@
 		4968D2281764868B008D4AC0 /* UIImage+WTFilterBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WTFilterBlur.m"; sourceTree = "<group>"; };
 		4968D22A1764869A008D4AC0 /* UIImage+WTFilterFastBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WTFilterFastBlur.h"; sourceTree = "<group>"; };
 		4968D22B1764869A008D4AC0 /* UIImage+WTFilterFastBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WTFilterFastBlur.m"; sourceTree = "<group>"; };
+		49AA25461AE133FE00945067 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		49B345A81762CE260072708E /* WTExtensionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTExtensionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B345AB1762CE260072708E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		49B345AD1762CE260072708E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,8 +64,6 @@
 		49B345C11762CE260072708E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		49B345C31762CE260072708E /* WTMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTMasterViewController.h; sourceTree = "<group>"; };
 		49B345C41762CE260072708E /* WTMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTMasterViewController.m; sourceTree = "<group>"; };
-		49B345D51762D0C80072708E /* WTStaticTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTStaticTableDataSource.h; sourceTree = "<group>"; };
-		49B345D61762D0C80072708E /* WTStaticTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTStaticTableDataSource.m; sourceTree = "<group>"; };
 		49B345D81762D0C80072708E /* UIImage+WTFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WTFilter.h"; sourceTree = "<group>"; };
 		49B345DB1762D0C80072708E /* UIView+WTExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WTExtension.h"; sourceTree = "<group>"; };
 		49B345DC1762D0C80072708E /* UIView+WTExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WTExtension.m"; sourceTree = "<group>"; };
@@ -164,7 +163,6 @@
 		49B345B11762CE260072708E /* WTExtensionDemo */ = {
 			isa = PBXGroup;
 			children = (
-				49B345D41762D0C80072708E /* vendor */,
 				49B345EB1762D4650072708E /* screenshot.png */,
 				49B345BA1762CE260072708E /* WTAppDelegate.h */,
 				49B345BB1762CE260072708E /* WTAppDelegate.m */,
@@ -175,6 +173,7 @@
 				49B345E91762D2AC0072708E /* WTTestImageViewController.m */,
 				4968D21E17642A1A008D4AC0 /* WTTestAnimViewController.h */,
 				4968D21F17642A1A008D4AC0 /* WTTestAnimViewController.m */,
+				49AA25461AE133FE00945067 /* Main.storyboard */,
 			);
 			path = WTExtensionDemo;
 			sourceTree = "<group>";
@@ -191,16 +190,6 @@
 				49B345C11762CE260072708E /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		49B345D41762D0C80072708E /* vendor */ = {
-			isa = PBXGroup;
-			children = (
-				49B345D51762D0C80072708E /* WTStaticTableDataSource.h */,
-				49B345D61762D0C80072708E /* WTStaticTableDataSource.m */,
-			);
-			name = vendor;
-			path = ../vendor;
 			sourceTree = "<group>";
 		};
 		49B345D71762D0C80072708E /* UIImage+WTFilter */ = {
@@ -317,6 +306,7 @@
 				49B345B61762CE260072708E /* InfoPlist.strings in Resources */,
 				49B345BE1762CE260072708E /* Default.png in Resources */,
 				49B345C01762CE260072708E /* Default@2x.png in Resources */,
+				49AA25471AE133FE00945067 /* Main.storyboard in Resources */,
 				49B345C21762CE260072708E /* Default-568h@2x.png in Resources */,
 				49B345EC1762D4650072708E /* screenshot.png in Resources */,
 			);
@@ -363,7 +353,6 @@
 				49B345B81762CE260072708E /* main.m in Sources */,
 				49B345BC1762CE260072708E /* WTAppDelegate.m in Sources */,
 				49B345C51762CE260072708E /* WTMasterViewController.m in Sources */,
-				49B345E01762D0C80072708E /* WTStaticTableDataSource.m in Sources */,
 				49B345E21762D0C80072708E /* UIView+WTExtension.m in Sources */,
 				49B345E31762D0C80072708E /* UIImage+WTExtension.m in Sources */,
 				49B345EA1762D2AC0072708E /* WTTestImageViewController.m in Sources */,
